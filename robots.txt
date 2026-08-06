@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://santehnik.dp.ua/sitemap.xml

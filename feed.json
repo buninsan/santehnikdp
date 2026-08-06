@@ -1,0 +1,13 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "santehnik.dp.ua",
+    "description": "",
+    "home_page_url": "https://santehnik.dp.ua",
+    "feed_url": "https://santehnik.dp.ua/feed.json",
+    "user_comment": "",
+    "author": {
+        "name": "santehnik"
+    },
+    "items": [
+    ]
+}
