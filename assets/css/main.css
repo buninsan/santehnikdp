@@ -2208,22 +2208,85 @@ textarea {
 
 /* =====================================================================
    Site customization — Сантехнік Дніпро
-   Call button (.cta-call): tel: link built from the post/page "Call
+   Brand colors (used below + will grow into the full palette pass).
+   ===================================================================== */
+:root {
+  --brand-brass: #c97a3d;
+  --brand-brass-hover: #e2954f;
+  --brand-ink: #142226;
+}
+
+/* Lock the whole site to a single narrow (480px) phone-width column on
+   every screen size — desktop included. This, plus the language-switcher
+   rules below, used to live as hand-pasted !important hacks in Publii's
+   "Custom CSS" admin field; moved here so they're part of the theme
+   itself. Page margin is now set properly via the theme's own "Page
+   margin" setting (theme.simple.config.json → customConfig.pageMargin)
+   instead of an !important override. */
+body {
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 100vh;
+  box-shadow: 0 0 28px rgba(0, 0, 0, 0.22);
+}
+.top,
+header,
+main,
+footer,
+.container {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Language switcher in the header (UA | RU) */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 0;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.lang-btn {
+  color: #888888;
+  text-decoration: none;
+  padding: 2px 4px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.lang-btn:hover {
+  color: #ffffff;
+}
+.lang-btn.active {
+  color: var(--brand-brass);
+  border-bottom: 2px solid var(--brand-brass);
+}
+.lang-sep {
+  color: #444444;
+}
+.top .site-name {
+  order: 0;
+  margin-right: auto;
+}
+.top .lang-switcher {
+  order: 1;
+  margin-left: auto;
+}
+
+/* Call button (.cta-call): tel: link built from the post/page "Call
    button" field (partials/cta-call.hbs). Placed after the featured
    image, after the article text, and — if the article is long enough —
-   auto-cloned into the middle by the script in partials/footer.hbs.
-   ===================================================================== */
+   auto-cloned into the middle by the script in partials/footer.hbs. */
 .cta-call {
-  --cta-brass: #c97a3d;
-  --cta-ink: #142226;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
   margin: 1.2rem var(--page-margin);
   padding: 15px 12px 14px;
-  background: var(--cta-brass);
-  color: var(--cta-ink);
+  background: var(--brand-brass);
+  color: var(--brand-ink);
   text-align: center;
   text-decoration: none;
   border-radius: 2px;
@@ -2231,8 +2294,8 @@ textarea {
 }
 .cta-call:hover,
 .cta-call:focus {
-  background: #e2954f;
-  color: var(--cta-ink);
+  background: var(--brand-brass-hover);
+  color: var(--brand-ink);
 }
 .cta-call:active {
   -webkit-transform: translateY(2px);
