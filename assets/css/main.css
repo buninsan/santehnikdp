@@ -2267,6 +2267,34 @@ textarea {
   color: var(--brand-brass);
 }
 
+/* Homepage hero: pull the image up to sit right under the H1, above the
+   rest of the free-form hero text (which is one opaque HTML blob from
+   Theme Settings, so it can't be split — flex "order" reorders visually
+   instead). Scoped to .hero__content .wrapper only: .wrapper is also
+   used elsewhere (feed, footer) and must stay untouched there. */
+.hero__content .wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.hero__content .wrapper > h1 {
+  order: -2;
+  margin-top: 1.25rem;
+}
+.hero__image--under-h1 {
+  order: -1;
+  /* Same value as h1's margin-top above, on purpose — equal breathing
+     room above and below the H1. */
+  margin-top: 1.25rem;
+  margin-bottom: 1rem;
+  /* .hero__image normally adds its own side margins (for when it sits
+     directly in .hero, full-bleed); here it's nested inside .wrapper,
+     which already has page-margin padding, so drop the extra side
+     margins so the image lines up with the H1's text width instead of
+     being narrower than it. */
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /* Page margin: bigger (relative) on phones where the column is often
    narrower than 480px, tighter on desktop where it's always a flat
    480px regardless of the extra screen around it. */
