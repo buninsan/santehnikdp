@@ -10,6 +10,9 @@
     var limit = Number(container.dataset.limit) || 0;
     var summaryEl = document.getElementById('reviews-summary');
     var moreEl = document.getElementById('reviews-more');
+    // <html lang="..."> is already set correctly per page by head.hbs —
+    // reuse it instead of threading a separate language flag through here.
+    var isRu = document.documentElement.lang === 'ru';
 
     function shuffle(arr) {
         for (var i = arr.length - 1; i > 0; i--) {
@@ -35,11 +38,11 @@
         .then(function (r) { return r.json(); })
         .then(function (data) {
             if (!data.count) {
-                if (summaryEl) summaryEl.textContent = 'Поки що немає відгуків.';
+                if (summaryEl) summaryEl.textContent = isRu ? 'Пока нет отзывов.' : 'Поки що немає відгуків.';
                 return;
             }
             if (summaryEl) {
-                summaryEl.textContent = data.average + ' ★ · ' + data.count + ' відгуків';
+                summaryEl.textContent = data.average + (isRu ? ' ★ · ' + data.count + ' отзывов' : ' ★ · ' + data.count + ' відгуків');
             }
 
             var shown = data.reviews;

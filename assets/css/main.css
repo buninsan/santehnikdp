@@ -2243,10 +2243,11 @@ textarea {
 .site-name {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
+  margin-left: 10px;
   font-family: var(--brand-font);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 0.85rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--brand-brass);
