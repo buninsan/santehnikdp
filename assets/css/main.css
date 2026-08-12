@@ -2217,6 +2217,18 @@ textarea {
   --brand-font: 'Oswald', 'Arial Narrow', 'Segoe UI Semibold', sans-serif;
 }
 
+/* Sitewide readability pass: headings match the header call-button color
+   (--brand-brass), and body text goes from the theme's default dark-mode
+   gray (#BFBFBF) to full white for better contrast — both --headings-color
+   and --text-color are Publii-generated variables set earlier in the
+   compiled stylesheet (light mode, and again inside a dark-mode media
+   query); this plain :root block comes later in the cascade so it wins
+   in both without needing !important. */
+:root {
+  --headings-color: var(--brand-brass);
+  --text-color: var(--white);
+}
+
 /* Self-hosted display face for the brand wordmark (no Google Fonts /
    Publii font-picker involved — just two local files, cyrillic + latin). */
 @font-face {
@@ -2410,6 +2422,18 @@ footer,
   top: 0;
   background: var(--page-bg);
   z-index: 50;
+}
+
+/* The base theme shows a hamburger toggle only below ~900px and an inline
+   horizontal menu above it (typical responsive nav). This site is always
+   locked to a 480px column regardless of real viewport width, so there's
+   no "wide desktop" layout for that inline menu to make sense in — force
+   the toggle button on and the inline menu off at every width instead. */
+.navbar .navbar__toggle {
+  display: block;
+}
+.navbar .navbar__menu {
+  display: none;
 }
 
 /* Call button (.cta-call): tel: link built from the post/page "Call
