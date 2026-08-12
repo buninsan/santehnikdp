@@ -2267,6 +2267,31 @@ textarea {
   color: var(--brand-brass);
 }
 
+/* Breadcrumbs (post/page templates only). No horizontal padding on
+   .breadcrumbs itself — .wrapper inside already adds page-margin padding,
+   same convention as .reviews and every other section in this file. */
+.breadcrumbs {
+  padding-top: 10px;
+}
+.breadcrumbs .wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--ink-soft, rgba(255, 255, 255, 0.55));
+  overflow-wrap: anywhere;
+}
+.breadcrumbs a {
+  color: inherit;
+  text-decoration: none;
+}
+.breadcrumbs a:hover {
+  color: var(--brand-brass);
+}
+.breadcrumbs__sep {
+  opacity: 0.6;
+}
+
 /* Homepage hero: pull the image up to sit right under the H1, above the
    rest of the free-form hero text (which is one opaque HTML blob from
    Theme Settings, so it can't be split — flex "order" reorders visually
