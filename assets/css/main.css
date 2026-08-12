@@ -2508,7 +2508,9 @@ footer,
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
-  width: max-content;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .star-input input {
   position: absolute;
@@ -2516,11 +2518,14 @@ footer,
   pointer-events: none;
 }
 .star-input label {
+  flex: 0 1 auto;
+  min-width: 0;
   color: rgba(255, 255, 255, 0.25);
   cursor: pointer;
-  font-size: 1.8rem;
+  font-size: clamp(1.3rem, 7vw, 1.8rem);
   line-height: 1;
   padding: 0 2px;
+  text-align: center;
 }
 .star-input input:checked ~ label,
 .star-input label:hover,
