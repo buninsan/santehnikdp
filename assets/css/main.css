@@ -2239,9 +2239,6 @@ textarea {
 /* Brand wordmark in the header — condensed display face + brass, like
    the button, so it reads as a logo rather than plain menu text. */
 .site-name {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
   font-family: var(--brand-font);
   font-weight: 700;
   font-size: 1.05rem;
@@ -2250,8 +2247,24 @@ textarea {
   color: var(--brand-brass);
   text-decoration: none;
 }
-.site-name__icon {
+
+/* Home button — separate from .site-name on purpose: it always points to
+   the main (UA) homepage from anywhere on the site, regardless of which
+   language page you're currently on. */
+.home-icon {
+  display: flex;
+  align-items: center;
   flex: none;
+  color: #ffffff;
+  margin-right: 4px;
+}
+.home-icon svg {
+  width: 24px;
+  height: 24px;
+}
+.home-icon:hover,
+.home-icon:focus {
+  color: var(--brand-brass);
 }
 
 /* Page margin: bigger (relative) on phones where the column is often
