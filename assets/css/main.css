@@ -2239,6 +2239,9 @@ textarea {
 /* Brand wordmark in the header — condensed display face + brass, like
    the button, so it reads as a logo rather than plain menu text. */
 .site-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--brand-font);
   font-weight: 700;
   font-size: 1.05rem;
@@ -2246,6 +2249,21 @@ textarea {
   text-transform: uppercase;
   color: var(--brand-brass);
   text-decoration: none;
+}
+.site-name__icon {
+  flex: none;
+}
+
+/* Page margin: bigger (relative) on phones where the column is often
+   narrower than 480px, tighter on desktop where it's always a flat
+   480px regardless of the extra screen around it. */
+:root {
+  --page-margin: 6vw;
+}
+@media (min-width: 48em) {
+  :root {
+    --page-margin: 2vw;
+  }
 }
 
 /* Lock the whole site to a single narrow (480px) phone-width column on
