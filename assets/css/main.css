@@ -2454,6 +2454,15 @@ footer,
   gap: 16px;
   margin-top: 0.75rem;
 }
+.reviews__add-link {
+  /* .cta-call normally adds its own side margins for when it sits
+     directly in .hero; here it's nested inside .wrapper, which already
+     has page-margin padding, so drop the extra side margins (same fix
+     as .hero__image--under-h1 needed). */
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 1rem;
+}
 .reviews__links a {
   color: var(--brand-brass);
   font-weight: 600;
