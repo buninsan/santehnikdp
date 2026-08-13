@@ -2232,15 +2232,19 @@ h5, .h5 { font-size: 0.95rem; }
 h6, .h6 { font-size: 0.875rem; }
 
 /* Sitewide readability pass: headings match the header call-button color
-   (--brand-brass), and body text goes from the theme's default dark-mode
-   gray (#BFBFBF) to full white for better contrast — both --headings-color
-   and --text-color are Publii-generated variables set earlier in the
-   compiled stylesheet (light mode, and again inside a dark-mode media
-   query); this plain :root block comes later in the cascade so it wins
-   in both without needing !important. */
+   (--brand-brass) in both themes — brass has enough contrast on white
+   too, so no need to scope it. Body text only needed fixing in DARK mode
+   (the theme's default dark-mode gray #BFBFBF was too low-contrast) —
+   light mode's own text color was already fine, so forcing --text-color
+   to white unconditionally made light-mode text white-on-white and
+   invisible. Scoped to prefers-color-scheme: dark this time. */
 :root {
   --headings-color: var(--brand-brass);
-  --text-color: var(--white);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: var(--white);
+  }
 }
 
 /* Self-hosted display face for the brand wordmark (no Google Fonts /
@@ -2345,11 +2349,11 @@ h6, .h6 { font-size: 0.875rem; }
   flex-direction: column;
 }
 .hero__content .wrapper > h1 {
-  order: -2;
+  order: -3;
   margin-top: 1.25rem;
 }
 .hero__image--under-h1 {
-  order: -1;
+  order: -2;
   /* Same value as h1's margin-top above, on purpose — equal breathing
      room above and below the H1. */
   margin-top: 1.25rem;
@@ -2365,11 +2369,14 @@ h6, .h6 { font-size: 0.875rem; }
 
 /* Big call button right under the hero image (homepage only). Reuses
    .cta-call's look (same background/hover), just bigger and pulled into
-   the flex order between the image (-1) and the free-form hero text
-   (default 0) — and needs the same side-margin fix as the image above,
-   since it's nested inside .wrapper too. */
+   the flex order between the image (-2) and the free-form hero text
+   (default 0) — needs its own integer (CSS "order" only accepts
+   integers; -0.5 here silently fell back to the initial value 0, which
+   is why this button used to land at the very bottom instead) — and
+   needs the same side-margin fix as the image above, since it's nested
+   inside .wrapper too. */
 .hero-cta {
-  order: -0.5;
+  order: -1;
   margin-left: 0;
   margin-right: 0;
   padding: 18px 14px;
