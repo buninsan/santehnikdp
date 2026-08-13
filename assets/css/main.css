@@ -2367,27 +2367,6 @@ h6, .h6 { font-size: 0.875rem; }
   margin-right: 0;
 }
 
-/* Big call button right under the hero image (homepage only). Reuses
-   .cta-call's look (same background/hover), just bigger and pulled into
-   the flex order between the image (-2) and the free-form hero text
-   (default 0) — needs its own integer (CSS "order" only accepts
-   integers; -0.5 here silently fell back to the initial value 0, which
-   is why this button used to land at the very bottom instead) — and
-   needs the same side-margin fix as the image above, since it's nested
-   inside .wrapper too. */
-.hero-cta {
-  order: -1;
-  margin-left: 0;
-  margin-right: 0;
-  padding: 18px 14px;
-}
-.hero-cta .cta-call__label {
-  font-size: 1.3rem;
-}
-.hero-cta .cta-call__number {
-  font-size: 1rem;
-}
-
 /* Page margin: bigger (relative) on phones where the column is often
    narrower than 480px, tighter on desktop where it's always a flat
    480px regardless of the extra screen around it. */
@@ -2463,11 +2442,16 @@ footer,
    scrolling up (see assets/js/scripts.js toggling the .sticky class) and
    hides it again on scroll-down. The header now carries the call button,
    so it should stay reachable regardless of scroll direction — override
-   to permanently sticky instead of depending on that JS-toggled class. */
+   to permanently sticky instead of depending on that JS-toggled class.
+   Background is our own fixed --brand-ink (not the theme's --page-bg),
+   which flips to white in light mode — the header's white home-icon and
+   translucent lang-switcher styling only work on a dark background, so
+   the header stays dark regardless of the visitor's OS light/dark
+   preference, same as the rest of this brass/petrol design. */
 .top {
   position: sticky;
   top: 0;
-  background: var(--page-bg);
+  background: var(--brand-ink);
   z-index: 50;
 }
 
@@ -2510,6 +2494,24 @@ footer,
   -webkit-transform: translateY(2px);
           transform: translateY(2px);
   box-shadow: 0 4px 0 rgba(0, 0, 0, 0.14);
+}
+
+/* Call button right under the hero image (homepage only) — same exact
+   size/look as the .cta-call above the footer, just pulled into the flex
+   order between the image (-2) and the free-form hero text (default 0)
+   — needs its own integer (CSS "order" only accepts integers; -0.5 here
+   silently fell back to the initial value 0, which is why this button
+   used to land at the very bottom instead) — and needs the same
+   side-margin fix as the image above, since it's nested inside .wrapper
+   too. This rule has to come AFTER .cta-call above (same specificity —
+   one class each — so whichever is later in the file wins the
+   margin-left/right tug of war; before this got moved down here,
+   .cta-call's own margin was winning and making this button narrower
+   than the one above the footer). */
+.hero-cta {
+  order: -1;
+  margin-left: 0;
+  margin-right: 0;
 }
 .cta-call__label {
   font-weight: 700;
