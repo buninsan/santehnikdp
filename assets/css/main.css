@@ -2454,6 +2454,13 @@ footer,
   background: var(--brand-ink);
   z-index: 50;
 }
+/* The base theme's own .top.sticky (added by scripts.js while scrolling
+   up) is TWO classes — higher specificity than the plain .top above — so
+   its background: var(--page-bg) was winning during scroll-up and
+   flashing the header white in light mode. Same fix, matched specificity. */
+.top.sticky {
+  background: var(--brand-ink);
+}
 
 /* The base theme shows a hamburger toggle only below ~900px and an inline
    horizontal menu above it (typical responsive nav). This site is always
