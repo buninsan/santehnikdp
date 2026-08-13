@@ -2430,7 +2430,7 @@ footer,
   color: #ffffff;
 }
 .lang-btn.active {
-  color: var(--brand-brass);
+  color: #ffffff;
   border-bottom: 2px solid var(--brand-brass);
 }
 .lang-sep {
