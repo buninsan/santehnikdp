@@ -2290,13 +2290,13 @@ h6, .h6 { font-size: 0.875rem; }
   font-size: 0.8rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--brand-ink);
+  color: white;
   text-decoration: none;
 }
 .site-name:hover,
 .site-name:focus {
   background: var(--brand-brass-hover);
-  color: var(--brand-ink);
+  color: white;
 }
 .site-name__icon {
   flex: none;
@@ -2545,6 +2545,7 @@ html.no-scroll {
   font-size: 1.05rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  color: white;
 }
 .cta-call__number {
   font-variant-numeric: tabular-nums;
