@@ -1082,7 +1082,6 @@ textarea {
   -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
           box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
   height: 100vh;
-  left: 0;
   max-width: 400px;
   overflow: auto;
   position: fixed;
@@ -1092,15 +1091,17 @@ textarea {
   width: 80%;
   z-index: 1001;
 }
+/* No explicit "left" here on purpose (Sasha's fix, 2026-08-13): the JS
+   (initMobileMenuSidebar in scripts.js) appends this div as the LAST
+   CHILD OF <body>, not inside the header — so with no left/right set,
+   its fixed-position "static position" falls back to body's own content
+   box, which is the centered 480px column (body has max-width:480px;
+   margin:auto), not the real viewport edge. That's what was pushing it
+   to the true browser edge on wide desktop screens. .is-hidden below
+   still explicitly sets left:-400px to slide it off canvas when closed. */
 .navbar_mobile_sidebar.is-hidden {
   left: -400px;
 }
-/* Deliberately NOT centering this drawer on wide screens (position:fixed
-   docks it to the real browser edge there instead of the visible 480px
-   column) — three attempts at that all broke the open/close toggle on
-   desktop in ways that weren't fully explained even after checking the
-   toggle JS (which isn't width-dependent), so this stays as a known
-   minor cosmetic mismatch rather than risk the toggle again. */
 .navbar_mobile_sidebar .navbar__menu {
   margin: 24px;
 }
