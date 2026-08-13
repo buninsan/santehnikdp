@@ -1095,14 +1095,25 @@ textarea {
 .navbar_mobile_sidebar.is-hidden {
   left: -400px;
 }
-/* Tried twice to make this drawer (position:fixed, left:0/-400px above)
-   line up with the centered 480px column on wide desktop screens instead
-   of docking to the real browser edge — both attempts (custom property +
-   max(), then a plain calc() behind a media query) broke the open/close
-   toggle instead. Reverted: on wide screens the drawer now opens flush
-   against the real viewport edge rather than the visible column, which
-   is a minor cosmetic mismatch, in exchange for the toggle actually
-   working everywhere. */
+/* On screens wider than our 480px column, this drawer (position:fixed,
+   left:0/-400px above) would otherwise dock to the real browser edge
+   instead of the visible column. Earlier attempts at this same fix broke
+   the open/close toggle — turned out that was from accidentally deleting
+   the .is-hidden rule above while editing, not from this math; now that
+   rule is confirmed intact, so this only ADDS extra rules and never
+   touches it. Both states get their own full override here, scoped to
+   exactly where centering starts mattering (once the real viewport is
+   wider than the column itself) rather than the theme's own wider
+   "desktop" breakpoint, so there's no dead zone in between where the
+   drawer would still dock to the real edge. */
+@media (min-width: 481px) {
+  .navbar_mobile_sidebar {
+    left: calc((100vw - 480px) / 2);
+  }
+  .navbar_mobile_sidebar.is-hidden {
+    left: calc((100vw - 480px) / 2 - 400px);
+  }
+}
 .navbar_mobile_sidebar .navbar__menu {
   margin: 24px;
 }
