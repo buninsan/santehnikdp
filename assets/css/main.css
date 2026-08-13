@@ -903,7 +903,7 @@ textarea {
   padding: 0;
   position: relative;
   right: 0;
-  margin-left: 0.75rem;
+  margin-left: 0.625rem;
   text-transform: none;
   z-index: 2004;
   height: 3.2rem;
@@ -2280,9 +2280,9 @@ h6, .h6 { font-size: 0.875rem; }
 .site-name {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  margin-left: 10px;
-  padding: 5px 9px;
+  gap: 3px;
+  margin-left: 8px;
+  padding: 4px 7px;
   border-radius: 2px;
   background: var(--brand-brass);
   font-family: var(--brand-font);
@@ -2310,7 +2310,7 @@ h6, .h6 { font-size: 0.875rem; }
   align-items: center;
   flex: none;
   color: #ffffff;
-  margin-right: 4px;
+  margin-right: 3px;
 }
 .home-icon svg {
   width: 24px;
@@ -2414,7 +2414,7 @@ footer,
 .lang-switcher {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   padding: 20px 0;
   font-size: 15px;
   font-weight: 600;
@@ -2423,7 +2423,7 @@ footer,
 .lang-btn {
   color: #888888;
   text-decoration: none;
-  padding: 2px 4px;
+  padding: 2px 3px;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 .lang-btn:hover {
