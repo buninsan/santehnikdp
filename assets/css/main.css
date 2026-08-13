@@ -1094,16 +1094,19 @@ textarea {
 }
 /* This drawer is position:fixed, so left:0 above docks it to the real
    browser viewport's edge — fine on an actual narrow phone, but on a
-   wide desktop window that's far from our centered 480px column. Reuse
-   the same centering math as body's own margin:auto so the drawer lines
-   up with the visible column instead of the real screen edge; still
-   resolves to plain left:0 once the real viewport is 480px or narrower. */
-.navbar_mobile_sidebar {
-  --sidebar-left: max(0px, calc((100vw - 480px) / 2));
-  left: var(--sidebar-left);
-}
-.navbar_mobile_sidebar.is-hidden {
-  left: calc(var(--sidebar-left) - 400px);
+   wide desktop window that's far from our centered 480px column. Only
+   apply an offset once the real viewport is wider than our column (below
+   that, the untouched left:0 / left:-400px rules above already do the
+   right thing) — kept as a plain single-level calc() gated by a media
+   query rather than nested max()/var(), which somehow made the drawer
+   stay stuck open instead of toggling. */
+@media (min-width: 481px) {
+  .navbar_mobile_sidebar {
+    left: calc((100vw - 480px) / 2);
+  }
+  .navbar_mobile_sidebar.is-hidden {
+    left: calc((100vw - 480px) / 2 - 400px);
+  }
 }
 .navbar_mobile_sidebar .navbar__menu {
   margin: 24px;
