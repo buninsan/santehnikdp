@@ -2363,6 +2363,24 @@ h6, .h6 { font-size: 0.875rem; }
   margin-right: 0;
 }
 
+/* Big call button right under the hero image (homepage only). Reuses
+   .cta-call's look (same background/hover), just bigger and pulled into
+   the flex order between the image (-1) and the free-form hero text
+   (default 0) — and needs the same side-margin fix as the image above,
+   since it's nested inside .wrapper too. */
+.hero-cta {
+  order: -0.5;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 18px 14px;
+}
+.hero-cta .cta-call__label {
+  font-size: 1.3rem;
+}
+.hero-cta .cta-call__number {
+  font-size: 1rem;
+}
+
 /* Page margin: bigger (relative) on phones where the column is often
    narrower than 480px, tighter on desktop where it's always a flat
    480px regardless of the extra screen around it. */
@@ -2511,6 +2529,7 @@ footer,
   font-family: var(--brand-font);
   text-transform: uppercase;
   letter-spacing: 0.02em;
+  font-size: 1.05rem;
 }
 .reviews__summary {
   color: var(--brand-brass);
