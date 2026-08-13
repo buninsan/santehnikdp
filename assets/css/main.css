@@ -2462,6 +2462,19 @@ footer,
   background: var(--brand-ink);
 }
 
+/* Scroll-lock (html.no-scroll, added while the mobile menu drawer is
+   open) sets position:fixed on <html> with no explicit width. Normally
+   harmless — html/body span the full viewport anyway on an ordinary
+   site — but our body is capped to 480px and centered with margin:auto
+   *inside* html; once html itself becomes an auto-width fixed box it
+   shrinks-to-fit and left-aligns in the viewport, dragging the whole
+   already-narrow page to the left edge with it (only reachable once the
+   menu button became visible on desktop). Keep html full width so
+   body's own centering still has something correctly-sized to center in. */
+html.no-scroll {
+  width: 100%;
+}
+
 /* The base theme shows a hamburger toggle only below ~900px and an inline
    horizontal menu above it (typical responsive nav). This site is always
    locked to a 480px column regardless of real viewport width, so there's
