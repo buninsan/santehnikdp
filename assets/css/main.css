@@ -2707,3 +2707,20 @@ html.no-scroll {
   min-height: 1.2em;
   color: var(--brand-brass);
 }
+
+/* Header dropdown menu items — brand color + heading-scale size (h3-like) */
+.navbar_mobile_sidebar .navbar__menu li a,
+.navbar_mobile_sidebar .navbar__menu li .is-separator {
+  color: var(--brand-brass);
+  font-family: var(--brand-font);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.navbar_mobile_sidebar .navbar__menu li a:active,
+.navbar_mobile_sidebar .navbar__menu li a:focus,
+.navbar_mobile_sidebar .navbar__menu li a:hover,
+.navbar_mobile_sidebar .navbar__menu li .is-separator:active,
+.navbar_mobile_sidebar .navbar__menu li .is-separator:focus,
+.navbar_mobile_sidebar .navbar__menu li .is-separator:hover {
+  color: var(--brand-brass-hover);
+}
