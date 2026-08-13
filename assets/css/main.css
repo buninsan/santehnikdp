@@ -2710,6 +2710,59 @@ html.no-scroll {
   color: var(--brand-brass);
 }
 
+/* "Наші роботи" photo grid (works-list.hbs random block + page-our-works
+   full gallery). Photos come from Theme Settings custom upload fields
+   (workPhoto1..10) — same reasoning as reviews being a separate system:
+   Publii has no native multi-image field without a paid gallery plugin.
+   assets/js/works-grid.js hides all but 4 on random-mode page loads via
+   the .is-hidden class below. Same section styling as .reviews on
+   purpose — same visual "trust block" family. */
+.works {
+  padding: 2rem 0 1.5rem;
+  border-top: 1px solid var(--brand-brass);
+}
+.works h2 {
+  margin-top: 0;
+  font-family: var(--brand-font);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 1.05rem;
+}
+.works__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 1rem;
+}
+.works__item {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 2px;
+}
+.works__item a {
+  display: block;
+}
+.works__item img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+.works__item.is-hidden {
+  display: none;
+}
+.works__links {
+  margin-top: 0.75rem;
+}
+.works__links a {
+  color: var(--brand-brass);
+  font-weight: 600;
+  text-decoration: none;
+}
+.works__links a:hover {
+  text-decoration: underline;
+}
+
 /* Header dropdown menu items — brand color + heading-scale size (h3-like) */
 .navbar_mobile_sidebar .navbar__menu li a,
 .navbar_mobile_sidebar .navbar__menu li .is-separator {
