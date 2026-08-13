@@ -1092,6 +1092,9 @@ textarea {
   width: 80%;
   z-index: 1001;
 }
+.navbar_mobile_sidebar.is-hidden {
+  left: -400px;
+}
 /* Tried twice to make this drawer (position:fixed, left:0/-400px above)
    line up with the centered 480px column on wide desktop screens instead
    of docking to the real browser edge — both attempts (custom property +
