@@ -1,8 +1,8 @@
-// Client-side random subset for the portfolio photo block (works-list.hbs).
-// Mirrors reviews-list.js's random mode, but no fetch is needed here —
-// the photos are already baked into this HTML at build time via Theme
-// Settings upload fields, so this just shuffles and hides down to
-// data-limit on every page load.
+// Client-side random subset for the portfolio photo block (works-list.hbs,
+// currently data-limit="2"). Mirrors reviews-list.js's random mode, but no
+// fetch is needed here — the photos are already baked into this HTML at
+// build time via Theme Settings upload fields, so this just shuffles and
+// hides down to data-limit on every page load.
 (function () {
     var container = document.getElementById('works-grid');
     if (!container || container.dataset.mode !== 'random') return;
