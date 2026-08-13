@@ -2217,6 +2217,20 @@ textarea {
   --brand-font: 'Oswald', 'Arial Narrow', 'Segoe UI Semibold', sans-serif;
 }
 
+/* Fixed heading scale — the theme's own h1-h6 sizes above use
+   clamp(..., 100vw, ...), which scales with the REAL browser viewport.
+   Since the site is always locked to a 480px column regardless of real
+   viewport width (same reasoning as --page-margin and the sticky header
+   earlier), that clamp() keeps growing on wide desktop screens even
+   though the visible column never gets any wider — h1 was hitting ~48px.
+   Fixed rem values here guarantee the same, proportional look everywhere. */
+h1, .h1 { font-size: 1.6rem; }
+h2, .h2 { font-size: 1.3rem; }
+h3, .h3 { font-size: 1.15rem; }
+h4, .h4 { font-size: 1.05rem; }
+h5, .h5 { font-size: 0.95rem; }
+h6, .h6 { font-size: 0.875rem; }
+
 /* Sitewide readability pass: headings match the header call-button color
    (--brand-brass), and body text goes from the theme's default dark-mode
    gray (#BFBFBF) to full white for better contrast — both --headings-color
@@ -2257,13 +2271,21 @@ textarea {
   align-items: center;
   gap: 4px;
   margin-left: 10px;
+  padding: 5px 9px;
+  border-radius: 2px;
+  background: var(--brand-brass);
   font-family: var(--brand-font);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--brand-brass);
+  color: var(--brand-ink);
   text-decoration: none;
+}
+.site-name:hover,
+.site-name:focus {
+  background: var(--brand-brass-hover);
+  color: var(--brand-ink);
 }
 .site-name__icon {
   flex: none;
