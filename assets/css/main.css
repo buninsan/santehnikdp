@@ -1092,22 +1092,14 @@ textarea {
   width: 80%;
   z-index: 1001;
 }
-/* This drawer is position:fixed, so left:0 above docks it to the real
-   browser viewport's edge — fine on an actual narrow phone, but on a
-   wide desktop window that's far from our centered 480px column. Only
-   apply an offset once the real viewport is wider than our column (below
-   that, the untouched left:0 / left:-400px rules above already do the
-   right thing) — kept as a plain single-level calc() gated by a media
-   query rather than nested max()/var(), which somehow made the drawer
-   stay stuck open instead of toggling. */
-@media (min-width: 481px) {
-  .navbar_mobile_sidebar {
-    left: calc((100vw - 480px) / 2);
-  }
-  .navbar_mobile_sidebar.is-hidden {
-    left: calc((100vw - 480px) / 2 - 400px);
-  }
-}
+/* Tried twice to make this drawer (position:fixed, left:0/-400px above)
+   line up with the centered 480px column on wide desktop screens instead
+   of docking to the real browser edge — both attempts (custom property +
+   max(), then a plain calc() behind a media query) broke the open/close
+   toggle instead. Reverted: on wide screens the drawer now opens flush
+   against the real viewport edge rather than the visible column, which
+   is a minor cosmetic mismatch, in exchange for the toggle actually
+   working everywhere. */
 .navbar_mobile_sidebar .navbar__menu {
   margin: 24px;
 }
