@@ -2735,6 +2735,14 @@ html.no-scroll {
   margin-top: 1rem;
 }
 .works__item {
+  /* min-width: 0 is the fix for the "photos in one row instead of a 2x2
+     grid" bug: grid items default to min-width:auto, which lets an
+     oversized/differently-sized source photo force its column wider
+     than its 1fr share (the image's intrinsic size "blows out" the
+     track) — the classic CSS Grid + image pitfall. Resetting it makes
+     every column obey the 1fr split regardless of the original photo's
+     dimensions. */
+  min-width: 0;
   margin: 0;
   overflow: hidden;
   border-radius: 2px;
@@ -2761,6 +2769,49 @@ html.no-scroll {
 }
 .works__links a:hover {
   text-decoration: underline;
+}
+
+/* In-page lightbox for portfolio photos (assets/js/works-lightbox.js
+   builds this element on first click — nothing to render here, just the
+   styling). Reuses html.no-scroll for the scroll-lock, same class the
+   mobile menu drawer already uses. */
+.works-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 2rem 1rem;
+}
+.works-lightbox.is-hidden {
+  display: none;
+}
+.works-lightbox__img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  border-radius: 2px;
+}
+.works-lightbox__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.works-lightbox__close:hover,
+.works-lightbox__close:focus {
+  background: var(--brand-brass);
+  color: var(--brand-ink);
 }
 
 /* Header dropdown menu items — brand color + heading-scale size (h3-like) */
