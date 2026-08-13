@@ -2728,6 +2728,16 @@ html.no-scroll {
   letter-spacing: 0.02em;
   font-size: 1.05rem;
 }
+/* The heading itself is the "see all" link now (was a separate
+   .works__links paragraph before — merged to avoid the same word
+   appearing twice right next to each other). */
+.works h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+.works h2 a:hover {
+  text-decoration: underline;
+}
 .works__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2758,17 +2768,6 @@ html.no-scroll {
 }
 .works__item.is-hidden {
   display: none;
-}
-.works__links {
-  margin-top: 0.75rem;
-}
-.works__links a {
-  color: var(--brand-brass);
-  font-weight: 600;
-  text-decoration: none;
-}
-.works__links a:hover {
-  text-decoration: underline;
 }
 
 /* In-page lightbox for portfolio photos (assets/js/works-lightbox.js
