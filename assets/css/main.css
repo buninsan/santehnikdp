@@ -2328,9 +2328,13 @@ h6, .h6 { font-size: 0.875rem; }
   padding-top: 10px;
 }
 .breadcrumbs .wrapper {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  /* Was display:flex — caused a bug on long titles: overflow-wrap:anywhere
+     + flexbox's shrink algorithm let even the short "Головна" link get
+     squeezed and broken mid-word ("голов"/"на") instead of only the long
+     current-page title wrapping. Plain inline flow doesn't have that
+     squeeze behavior — text just wraps at word boundaries normally, and
+     the markup already has literal spaces between the link/separator/
+     title in breadcrumbs.hbs, so spacing is unaffected. */
   font-size: 0.8rem;
   color: var(--ink-soft, rgba(255, 255, 255, 0.55));
   overflow-wrap: anywhere;
